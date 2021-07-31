@@ -5,4 +5,6 @@ services:
     container_name: nginx-ln
     ports: 
       - "9000:80"
-    
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/  
+      - ./source/:/usr/share/nginx/html  
