@@ -1,0 +1,19 @@
+{
+  "folders": [{
+      "name": "source",
+      "path": "source"
+    },
+    // {
+    //   "name": "js",
+    //   "path": "js"
+    // },
+    {
+      "name": "AdrThai",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "css.validate": false,
+    "liveServer.settings.multiRootWorkspaceName": "source"
+  }
+}

@@ -1,18 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Test Nginx</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Address </title>
+    
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">      
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
+     <link rel="stylesheet" href="./js/dist/jquery.Thailand.min.css">
+    
     <style>
-        body{
-        text-align: center;
-        color: tomato;
+        a, h1, h2, .h2{
+            font-family: 'Lato', sans-serif !important;
+            line-height: 1.2em;
+            
+        }
+        a{
+            font-size: 1.2em;
+        }
+        label{
+            font-size: 1.2em;
+            display: block;
         }
     </style>
+
+
 </head>
 <body>
-    <h1>Hello My nginx ?</h1>
-    
 
+    <div class="uk-container uk-padding">  
+        
+
+        <div id="loader">
+            <div uk-spinner></div> กำลังโหลดข้อมูล...
+        </div>
+
+        <form id="adt" class="addr" style="display:none;" autocomplete="off" uk-grid method="POST" action="/action_page.php">
+
+            <!-- <div class="uk-width-1-2@m">
+                <label class="h2">ลายละเอียด เลขที่/หมู่ อื่นๆ</label>
+                <input name="info" class="uk-input uk-width-1-1" type="text">
+            </div> -->
+
+            <div class="uk-width-1-2@m">
+                <label class="h2">ตำบล / แขวง</label>
+                <input name="district" class="uk-input uk-width-1-1" type="text">
+
+
+                
+            </div>
+
+            <div class="uk-width-1-2@m">
+				<label class="h2">อำเภอ / เขต</label>
+				<input name="amphoe" class="uk-input uk-width-1-1" type="text">
+            </div>
+
+            <div class="uk-width-1-2@m">
+                <label class="h2">จังหวัด</label>
+                <input name="province" class="uk-input uk-width-1-1" type="text">
+            </div>
+
+            <div class="uk-width-1-2@m">
+                <label class="h2">รหัสไปรษณีย์</label>
+                <input name="zipcode" class="uk-input uk-width-1-1" type="text">
+            </div>
+
+            <!-- <div class="uk-width-1-2@m">
+                <label class="h2">บันทึก</label>
+                <input type="submit" value="Submit">
+            </div> -->
+
+           
+        </form>
+        
+
+     
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/colony/JQL.min.js"></script>
+    <script type="text/javascript" src="./js/colony/typeahead.bundle.js"></script>  
+     
+    <script type="text/javascript" src="./js/dist/jquery.Thailand.min.js"></script>
+    
+    <script type="text/javascript">     
+
+        $.Thailand({
+            database: './js/database/db.json', 
+            autocomplete_size: 15,            
+            $district: $('#adt [name="district"]'),
+            $amphoe: $('#adt [name="amphoe"]'),
+            $province: $('#adt [name="province"]'),
+            $zipcode: $('#adt [name="zipcode"]'),
+
+            onDataFill: function(data){
+                console.info('Data Filled', data);
+            },
+
+            onLoad: function(){
+                console.info('Autocomplete is ready!');
+                $('#loader, .addr').toggle();
+            }
+        });
+
+        // watch on change
+        $('#adt [name="info"]').change(function(){
+            console.log('รายละเอียด', this.value);
+        });
+
+        $('#adt [name="district"]').change(function(){
+            console.log('ตำบล', this.value);
+        });
+        $('#adt [name="amphoe"]').change(function(){
+            console.log('อำเภอ', this.value);
+        });
+        $('#adt [name="province"]').change(function(){
+            console.log('จังหวัด', this.value);
+        });
+        $('#adt [name="zipcode"]').change(function(){
+            console.log('รหัสไปรษณีย์', this.value);
+        });
+       
+    </script>
+    
 </body>
 </html>
